@@ -1,7 +1,13 @@
 import { motion } from 'motion/react';
 import { Camera, BookOpen, Award, Star, Trophy } from 'lucide-react';
+import { TeacherSection } from './sections/TeacherSection';
+import { QuickNav } from './sections/QuickNav';
 
-export function Hero() {
+interface HeroProps {
+  setActiveSection: (section: string) => void;
+}
+
+export function Hero({ setActiveSection }: HeroProps) {
   return (
     <div className="min-h-screen">
       <section className="relative min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -145,6 +151,9 @@ export function Hero() {
           </motion.div>
         </div>
       </section>
+
+      <TeacherSection />
+      <QuickNav setActiveSection={setActiveSection} />
     </div>
   );
 }
