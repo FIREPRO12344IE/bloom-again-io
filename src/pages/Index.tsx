@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Award, Users, BookOpen, MessageSquare, Mail, Camera, ChevronRight, Sparkles, Heart, Trophy, Star } from 'lucide-react';
-import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 
 export default function Index() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -384,12 +383,8 @@ function HomePage() {
                   transition={{ duration: 0.3 }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl blur-xl opacity-50" />
-                  <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border-4 border-white/30 shadow-2xl">
-                    <ImageWithFallback
-                      src="https://images.unsplash.com/photo-1758685848001-0396a85ba84f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB0ZWFjaGVyJTIwcG9ydHJhaXQlMjB3b21hbnxlbnwxfHx8fDE3NjE5OTUyNTh8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                      alt="Preeta Maam"
-                      className="w-full h-full object-cover"
-                    />
+                  <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border-4 border-white/30 shadow-2xl bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center">
+                    <Users className="w-32 h-32 text-white/30" />
                   </div>
                 </motion.div>
 
@@ -646,7 +641,7 @@ function GalleryPage() {
               whileHover={{ scale: 1.05 }}
             >
               {image.url ? (
-                <ImageWithFallback
+                <img
                   src={image.url}
                   alt={image.title}
                   className="w-full h-full object-cover"
@@ -764,7 +759,7 @@ function MagazinePage() {
               >
                 <div className="aspect-square rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 border-2 border-white/30 mb-4 flex items-center justify-center overflow-hidden">
                   {editor.photo ? (
-                    <ImageWithFallback src={editor.photo} alt={editor.name} className="w-full h-full object-cover" />
+                    <img src={editor.photo} alt={editor.name} className="w-full h-full object-cover" />
                   ) : (
                     <Users className="w-16 h-16 text-white/50" />
                   )}
@@ -877,7 +872,7 @@ function TeamPage() {
             >
               <div className="aspect-square rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 border-2 border-white/30 mb-3 overflow-hidden">
                 {student.photo ? (
-                  <ImageWithFallback src={student.photo} alt={student.name} className="w-full h-full object-cover" />
+                  <img src={student.photo} alt={student.name} className="w-full h-full object-cover" />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
                     <Users className="w-12 h-12 text-white/50" />
@@ -925,22 +920,22 @@ function TeamPage() {
               <div className="p-8">
                 {/* Student Photo & Header */}
                 <div className="flex flex-col sm:flex-row gap-6 mb-6">
-                  <div className="relative w-32 h-32 mx-auto sm:mx-0 flex-shrink-0">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl blur-xl opacity-50" />
-                    <div className="relative w-full h-full rounded-2xl overflow-hidden border-4 border-white/30">
-                      {selectedStudent.photo ? (
-                        <ImageWithFallback 
-                          src={selectedStudent.photo} 
-                          alt={selectedStudent.name} 
-                          className="w-full h-full object-cover" 
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-                          <Users className="w-16 h-16 text-white/50" />
-                        </div>
-                      )}
+                    <div className="relative w-32 h-32 mx-auto sm:mx-0 flex-shrink-0">
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl blur-xl opacity-50" />
+                      <div className="relative w-full h-full rounded-2xl overflow-hidden border-4 border-white/30">
+                        {selectedStudent.photo ? (
+                          <img 
+                            src={selectedStudent.photo} 
+                            alt={selectedStudent.name} 
+                            className="w-full h-full object-cover" 
+                          />
+                        ) : (
+                          <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
+                            <Users className="w-16 h-16 text-white/50" />
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
 
                   <div className="flex-1 text-center sm:text-left">
                     <h2 className="text-3xl font-['Dancing_Script'] text-white mb-2">{selectedStudent.name}</h2>
